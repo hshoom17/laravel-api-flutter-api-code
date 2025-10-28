@@ -21,5 +21,11 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+
+        // Seed foods first, then orders
+        $this->call([
+            FoodSeeder::class,
+            OrderSeeder::class,
+        ]);
     }
 }
