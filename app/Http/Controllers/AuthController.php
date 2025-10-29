@@ -44,12 +44,12 @@ class AuthController extends Controller
             'success' => true,
             'message' => 'User registered successfully',
             'user' => [
-                'id' => $user->id,
+                'id' => (string) $user->id,
                 'name' => $user->name,
                 'email' => $user->email,
                 'phone' => $user->phone,
-                'created_at' => $user->created_at,
-                'updated_at' => $user->updated_at,
+                'created_at' => $user->created_at?->toIso8601String(),
+                'updated_at' => $user->updated_at?->toIso8601String(),
             ],
             'token' => $token,
         ], 201);
@@ -87,12 +87,12 @@ class AuthController extends Controller
             'success' => true,
             'message' => 'Login successful',
             'user' => [
-                'id' => $user->id,
+                'id' => (string) $user->id,
                 'name' => $user->name,
                 'email' => $user->email,
                 'phone' => $user->phone,
-                'created_at' => $user->created_at,
-                'updated_at' => $user->updated_at,
+                'created_at' => $user->created_at?->toIso8601String(),
+                'updated_at' => $user->updated_at?->toIso8601String(),
             ],
             'token' => $token,
         ]);
@@ -121,12 +121,12 @@ class AuthController extends Controller
         return response()->json([
             'success' => true,
             'user' => [
-                'id' => $user->id,
+                'id' => (string) $user->id,
                 'name' => $user->name,
                 'email' => $user->email,
                 'phone' => $user->phone,
-                'created_at' => $user->created_at,
-                'updated_at' => $user->updated_at,
+                'created_at' => $user->created_at?->toIso8601String(),
+                'updated_at' => $user->updated_at?->toIso8601String(),
             ],
         ]);
     }
